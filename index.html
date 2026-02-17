@@ -1,10 +1,357 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>My Free Website</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rachit Singh | Cyberpunk Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family:'Orbitron', monospace;
+  background:#050510;
+  color:#00f7ff;
+  overflow-x:hidden;
+}
+
+/* Neon Glow */
+.neon {
+  text-shadow:0 0 5px #00f7ff, 0 0 10px #00f7ff, 0 0 20px #00f7ff;
+}
+
+/* Boot Screen */
+#boot {
+  position:fixed;
+  inset:0;
+  background:black;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+
+.loader {
+  width:300px;
+  height:5px;
+  background:#111;
+  margin-top:20px;
+  overflow:hidden;
+}
+.loader div {
+  height:100%;
+  width:0;
+  background:#00f7ff;
+  animation:load 3s forwards;
+}
+@keyframes load { to { width:100%; } }
+
+section {
+  padding:80px 10%;
+  border-bottom:1px solid rgba(0,247,255,0.2);
+}
+
+.card {
+  border:1px solid #00f7ff;
+  padding:20px;
+  margin-top:20px;
+  transition:0.3s;
+  background:rgba(0,0,0,0.5);
+}
+.card:hover {
+  transform:scale(1.05);
+  box-shadow:0 0 20px #00f7ff;
+}
+
+button {
+  padding:10px 20px;
+  border:1px solid #00f7ff;
+  background:transparent;
+  color:#00f7ff;
+  cursor:pointer;
+  transition:0.3s;
+}
+button:hover {
+  background:#00f7ff;
+  color:black;
+}
+
+nav {
+  position:fixed;
+  top:0;
+  width:100%;
+  background:rgba(0,0,0,0.7);
+  display:flex;
+  justify-content:center;
+  gap:40px;
+  padding:15px;
+  backdrop-filter:blur(10px);
+}
+nav a {
+  color:#00f7ff;
+  text-decoration:none;
+}
+nav a:hover { text-shadow:0 0 10px #00f7ff; }
+
+/* Cursor Glow */
+.cursor-glow {
+  position:fixed;
+  width:20px;
+  height:20px;
+  border-radius:50%;
+  pointer-events:none;
+  background:rgba(0,247,255,0.6);
+  box-shadow:0 0 20px #00f7ff;
+  transform:translate(-50%, -50%);
+}
+
+@media(max-width:768px){
+  section{ padding:60px 5%; }
+  .profiles-grid{ grid-template-columns:1fr; }
+}
+
+/* Competitive Profiles Grid */
+.profiles-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+  margin-top:20px;
+}
+
+
+/* Particle Canvas */
+#particles{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+}
+
+.rating{
+  margin-top:10px;
+  font-size:18px;
+}
+
+</style>
 </head>
-<body style="text-align:center;margin-top:100px;">
-    <h1> Live Website Test</h1>
-    <p>By Rachit </p>
+
+<body>
+<canvas id="particles"></canvas>
+
+<div id="boot">
+  <h1 class="neon">PORTFOLIO BOOTING...</h1>
+  <div class="loader"><div></div></div>
+</div>
+
+<div class="cursor-glow" id="cursor"></div>
+
+<nav>
+  <a href="#about">About</a>
+  <a href="#skills">Skills</a>
+  <a href="#projects">Projects</a>
+  <a href="#profiles">Profiles</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<section id="hero" style="margin-top:80px; text-align:center;">
+  <h1 class="neon" style="font-size:48px;">Rachit Singh</h1>
+  <p>Computer Science and Engineering</p>
+  <p>Indian Institute of Information Technology, Surat</p>
+  <br>
+  <button onclick="window.open('cv.pdf')">Download CV</button>
+</section>
+
+<section id="about">
+  <h2 class="neon">About Me</h2>
+  <p style="margin-top:20px;">
+    IIIT Surat CSE student with strong foundations in C and C++, graphics programming, and data structures.
+    Passionate about building efficient systems and solving complex problems.
+  </p>
+</section>
+
+<section id="skills">
+  <h2 class="neon">Skills</h2>
+  <div class="card">C / C++ / Python</div>
+  <div class="card">Data Structures & Algorithms</div>
+  <div class="card">Operating Systems / DBMS / SQL</div>
+  <div class="card">Git / Linux / SDL2</div>
+</section>
+
+<section id="projects">
+  <h2 class="neon">Projects</h2>
+  <div class="card">
+    <h3>2D Ray Tracing Engine</h3>
+    <p>Built in C using SDL2 to simulate light-ray propagation.</p>
+    <button onclick="window.open('https://github.com/Rachit1801/ray_tracing')">View GitHub</button>
+  </div>
+  <div class="card">
+    <h3>Disk Speed Benchmark Tool</h3>
+    <p>CLI tool to benchmark disk read/write speeds using low-level I/O.</p>
+    <button onclick="window.open('https://github.com/Rachit1801/diskspeed')">View GitHub</button>
+  </div>
+</section>
+
+<section id="profiles">
+  <h2 class="neon">Competitive Programming</h2>
+  <div class="profiles-grid">
+  <div class="card">
+    <h3>LeetCode</h3> 
+    <p>RachitNeverCodes</p>
+    <div class="rating" id="leetcodeRating">Loading rating...</div>
+    <button onclick="window.open('https://leetcode.com/RachitNeverCodes')">Visit Profile</button>
+  </div>
+  <div class="card">
+    <h3>Codeforces</h3> 
+    <p>RachitNeverCodes</p>
+    <div class="rating" id="cfRating">Loading rating...</div>
+    <button onclick="window.open('https://codeforces.com/profile/RachitNeverCodes')">Visit Profile</button>
+  </div>
+</div>
+</section>
+
+<section id="contact">
+  <h2 class="neon">Contact</h2>
+  <p>Email: rachitsingh18012005@gmail.com</p>
+  <p>GitHub: github.com/Rachit1801</p>
+</section>
+
+<script>
+/* Boot Screen Remove */
+setTimeout(()=>{
+  document.getElementById('boot').style.display='none';
+},3000);
+
+/* Cursor Glow */
+const cursor=document.getElementById('cursor');
+document.addEventListener('mousemove',(e)=>{
+  cursor.style.left=e.clientX+'px';
+  cursor.style.top=e.clientY+'px';
+});
+
+/* Keyboard Navigation */
+document.addEventListener('keydown',(e)=>{
+  if(e.key==='1') location.href='#about';
+  if(e.key==='2') location.href='#skills';
+  if(e.key==='3') location.href='#projects';
+  if(e.key==='4') location.href='#profiles';
+  if(e.key==='5') location.href='#contact';
+});
+
+
+/* ================= PARTICLE BACKGROUND ================= */
+const canvas=document.getElementById('particles');
+const ctx=canvas.getContext('2d');
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let particlesArray=[];
+
+class Particle{
+  constructor(){
+    this.x=Math.random()*canvas.width;
+    this.y=Math.random()*canvas.height;
+    this.size=Math.random()*2+1;
+    this.speedX=Math.random()*1-0.5;
+    this.speedY=Math.random()*1-0.5;
+    this.velocityY=0;
+  }
+  update(){
+    this.x += this.speedX;
+    this.y += this.speedY + this.velocityY;
+
+    // friction
+    this.velocityY *= 0.92;
+
+    // limit max velocity so they don't fly away
+    if(this.velocityY > 5) this.velocityY = 5;
+    if(this.velocityY < -5) this.velocityY = -5;
+
+    // horizontal wrap
+    if(this.x > canvas.width) this.x = 0;
+    if(this.x < 0) this.x = canvas.width;
+
+    // vertical wrap instead of bounce
+    if(this.y > canvas.height) this.y = 0;
+    if(this.y < 0) this.y = canvas.height;
+  }
+  draw(){
+    ctx.fillStyle='#00f7ff';
+    ctx.beginPath();
+    ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+    ctx.fill();
+  }
+}
+
+function initParticles(){
+  particlesArray = [];
+  for(let i = 0; i < 120; i++){
+    particlesArray.push(new Particle());
+  }
+}
+
+
+function animateParticles(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particlesArray.forEach(p=>{
+    p.update();
+    p.draw();
+  });
+  requestAnimationFrame(animateParticles);
+}
+
+initParticles();
+animateParticles();
+
+window.addEventListener('resize',()=>{
+  canvas.width=window.innerWidth;
+  canvas.height=window.innerHeight;
+  initParticles();
+});
+
+/* Scroll Physics Interaction */
+let lastScroll=window.scrollY;
+
+window.addEventListener('scroll',()=>{
+  let currentScroll=window.scrollY;
+  let delta=currentScroll-lastScroll;
+  lastScroll=currentScroll;
+
+  particlesArray.forEach(p=>{
+    p.velocityY += delta*0.02; // scroll force
+  });
+});
+
+/* ================= FETCH LIVE RATINGS ================= */
+
+// Codeforces API
+fetch('https://codeforces.com/api/user.info?handles=RachitNeverCodes')
+.then(res=>res.json())
+.then(data=>{
+  if(data.status==='OK'){
+    const rating=data.result[0].rating || 'Unrated';
+    document.getElementById('cfRating').innerText='Rating: '+rating;
+  }
+})
+.catch(()=>{
+  document.getElementById('cfRating').innerText='Unable to fetch rating';
+});
+
+// LeetCode unofficial API
+fetch('https://leetcode-stats-api.herokuapp.com/RachitNeverCodes')
+.then(res=>res.json())
+.then(data=>{
+  if(data.rating){
+    document.getElementById('leetcodeRating').innerText='Rating: '+Math.round(data.rating);
+  }else{
+    document.getElementById('leetcodeRating').innerText='Rating unavailable';
+  }
+})
+.catch(()=>{
+  document.getElementById('leetcodeRating').innerText='Unable to fetch rating';
+});
+
+</script>
+
 </body>
 </html>
