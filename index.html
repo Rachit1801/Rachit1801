@@ -108,7 +108,44 @@ nav a:hover { text-shadow:0 0 10px #00f7ff; }
 }
 
 @media(max-width:768px){
-  section{ padding:60px 5%; }
+  body{ font-size:14px; }
+
+  nav{
+    gap:15px;
+    font-size:12px;
+    padding:10px;
+    overflow-x:auto;
+  }
+
+  #hero h1{
+    font-size:28px !important;
+  }
+
+  section{
+    padding:50px 6%;
+  }
+
+  .card{
+    padding:15px;
+  }
+
+  .profiles-grid{
+    grid-template-columns:1fr;
+  }
+
+  /* Disable heavy effects on mobile */
+  .cursor-glow{ display:none; }
+}
+
+@media(max-width:480px){
+  nav{
+    justify-content:flex-start;
+  }
+
+  button{
+    width:100%;
+  }
+}
   .profiles-grid{ grid-template-columns:1fr; }
 }
 
@@ -175,7 +212,7 @@ nav a:hover { text-shadow:0 0 10px #00f7ff; }
   <div class="card">C / C++ / Python</div>
   <div class="card">Data Structures & Algorithms</div>
   <div class="card">Operating Systems / DBMS / SQL</div>
-  <div class="card">Git / Linux / SDL2</div>
+  <div class="card">AIML / Linux / SDL2</div>
 </section>
 
 <section id="projects">
@@ -196,13 +233,13 @@ nav a:hover { text-shadow:0 0 10px #00f7ff; }
   <h2 class="neon">Competitive Programming</h2>
   <div class="profiles-grid">
   <div class="card">
-    <h3>LeetCode</h3> 
+    <h3>LeetCode</h3>
     <p>RachitNeverCodes</p>
     <div class="rating" id="leetcodeRating">Loading rating...</div>
     <button onclick="window.open('https://leetcode.com/RachitNeverCodes')">Visit Profile</button>
   </div>
   <div class="card">
-    <h3>Codeforces</h3> 
+    <h3>Codeforces</h3>
     <p>RachitNeverCodes</p>
     <div class="rating" id="cfRating">Loading rating...</div>
     <button onclick="window.open('https://codeforces.com/profile/RachitNeverCodes')">Visit Profile</button>
@@ -213,6 +250,7 @@ nav a:hover { text-shadow:0 0 10px #00f7ff; }
 <section id="contact">
   <h2 class="neon">Contact</h2>
   <p>Email: rachitsingh18012005@gmail.com</p>
+  <p>Contact: +91 8208873149</p>
   <p>GitHub: github.com/Rachit1801</p>
 </section>
 
@@ -285,7 +323,8 @@ class Particle{
 
 function initParticles(){
   particlesArray = [];
-  for(let i = 0; i < 120; i++){
+  let particleCount = window.innerWidth < 768 ? 60 : 120;
+  for(let i = 0; i < particleCount; i++){
     particlesArray.push(new Particle());
   }
 }
