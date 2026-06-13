@@ -73,15 +73,6 @@
 
 </div>
 
----
-
-# Contribution Activity
-
-<div align="center">
-
-<img width="100%" src="https://github-readme-activity-graph.vercel.app/graph?username=Rachit1801&bg_color=0D1117&color=8B5CF6&line=7C3AED&point=A855F7&hide_border=true"/>
-
-</div>
 
 
 
